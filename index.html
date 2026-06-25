@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Английский A2 → B2</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --bg2: #f5f5f3; --bg3: #ebebea;
+    --text: #1a1a18; --text2: #6b6b68; --text3: #a0a09d;
+    --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.2);
+    --purple: #534AB7; --purple-bg: #EEEDFE; --purple-dark: #3C3489;
+    --teal: #0F6E56; --teal-bg: #E1F5EE;
+    --amber: #854F0B; --amber-bg: #FAEEDA;
+    --radius: 8px; --radius-lg: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2c;
+      --text: #f0efea; --text2: #a0a09d; --text3: #6b6b68;
+      --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.18);
+    }
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; }
+  .container { max-width: 720px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+  .header { text-align: center; margin-bottom: 2rem; }
+  .header h1 { font-size: 26px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+  .header p { font-size: 15px; color: var(--text2); }
+  .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1rem; }
+  .progress-section { margin-bottom: 1.5rem; }
+  .progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .progress-top span { font-size: 13px; color: var(--text2); }
+  .phase-badge { font-size: 12px; background: var(--purple-bg); color: var(--purple-dark); padding: 3px 10px; border-radius: 999px; }
+  .progress-track { background: var(--bg2); border-radius: 999px; height: 10px; overflow: hidden; margin-bottom: 6px; }
+  .progress-fill { height: 100%; background: var(--purple); border-radius: 999px; transition: width 0.4s; }
+  .milestones { display: flex; justify-content: space-between; font-size: 11px; color: var(--text3); }
+  .milestones span.active { color: var(--purple); font-weight: 500; }
+  .progress-control { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+  .progress-control input[type=range] { flex: 1; accent-color: var(--purple); }
+  .progress-control span { font-size: 13px; font-weight: 500; min-width: 32px; }
+  .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 1.5rem; }
+  @media (max-width: 500px) { .days-grid { grid-template-columns: repeat(4, 1fr); } }
+  .day-card { border: 0.5px solid var(--border); border-radius: var(--radius); padding: 10px 4px; text-align: center; cursor: pointer; transition: transform 0.15s; background: var(--bg); }
+  .day-card:hover { transform: translateY(-2px); border-color: var(--border2); }
+  .day-card .icon { font-size: 20px; margin-bottom: 4px; display: block; }
+  .day-card .dname { font-size: 11px; font-weight: 500; }
+  .day-card .dtopic { font-size: 10px; color: var(--text2); margin-top: 2px; }
+  .day-card .today-badge { font-size: 9px; color: var(--text3); margin-top: 3px; }
+  .lesson-panel { border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 1rem; }
+  .lesson-header { padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; }
+  .lesson-header h2 { font-size: 18px; font-weight: 500; }
+  .lesson-header .meta { font-size: 13px; opacity: 0.75; margin-top: 2px; }
+  .timer { display: flex; align-items: center; gap: 5px; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .timer.urgent { color: #993C1D !important; }
+  .lesson-block { padding: 1rem 1.25rem; border-top: 0.5px solid var(--border); }
+  .block-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .block-content { font-size: 14px; color: var(--text2); line-height: 1.65; }
+  .rule-box { background: var(--bg2); border-radius: var(--radius); padding: 12px 14px; margin: 10px 0; }
+  .rule-box table { width: 100%; font-size: 13px; border-collapse: collapse; }
+  .rule-box td { padding: 5px 8px; }
+  .rule-box td:first-child { font-weight: 500; color: var(--text); width: 40%; }
+  .rule-box td:last-child { color: var(--text2); }
+  .rule-box tr + tr td { border-top: 0.5px solid var(--border); }
+  .quiz-q { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .quiz-row { display: flex; gap: 8px; }
+  .quiz-row input { flex: 1; padding: 8px 12px; border: 0.5px solid var(--border2); border-radius: var(--radius); font-size: 14px; background: var(--bg); color: var(--text); outline: none; }
+  .quiz-row input:focus { border-color: var(--purple); box-shadow: 0 0 0 2px rgba(83,74,183,0.15); }
+  .quiz-row button { padding: 8px 16px; background: var(--purple); color: white; border: none; border-radius: var(--radius); font-size: 14px; cursor: pointer; }
+  .quiz-row button:hover { background: var(--purple-dark); }
+  .quiz-fb { font-size: 13px; margin-top: 6px; min-height: 18px; }
+  .quiz-fb.ok { color: #0F6E56; }
+  .quiz-fb.err { color: #993C1D; }
+  .dots { display: flex; gap: 5px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bg2); border: 0.5px solid var(--border2); }
+  .dot.ok { background: #1D9E75; border-color: #1D9E75; }
+  .dot.err { background: #D85A30; border-color: #D85A30; }
+  .btn { display: block; width: 100%; padding: 12px; border-radius: var(--radius); font-size: 15px; font-weight: 500; cursor: pointer; text-align: center; margin-top: 10px; border: none; }
+  .btn-primary { background: var(--purple); color: white; }
+  .btn-primary:hover { background: var(--purple-dark); }
+  .btn-secondary { background: transparent; color: var(--text); border: 0.5px solid var(--border2); }
+  .btn-secondary:hover { background: var(--bg2); }
+  .congrats { text-align: center; padding: 1.5rem; }
+  .congrats .big { font-size: 40px; font-weight: 500; color: var(--purple); }
+  .congrats p { font-size: 14px; color: var(--text2); margin-top: 8px; }
+  .quiz-progress { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .quiz-num { font-size: 12px; color: var(--text2); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1><i class="ti ti-school" style="color:#534AB7; vertical-align:-3px; margin-right:6px;"></i>Английский A2 → B2</h1>
+    <p>15 минут в день — и за 6–9 месяцев вы на уровне B2</p>
+  </div>
+
+  <div class="card progress-section">
+    <div class="progress-top">
+      <span>Ваш прогресс</span>
+      <span class="phase-badge" id="phaseBadge">Фаза 1 — Фундамент</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="pFill" style="width:8%"></div></div>
+    <div class="milestones">
+      <span class="active">A2</span>
+      <span id="m1">A2+</span>
+      <span id="m2">B1</span>
+      <span id="m3">B1+</span>
+      <span id="m4">B2</span>
+    </div>
+    <div class="progress-control">
+      <input type="range" min="0" max="100" value="8" id="pSlider" oninput="updateProgress(this.value)">
+      <span id="pPct">8%</span>
+    </div>
+  </div>
+
+  <div class="days-grid" id="daysGrid"></div>
+  <div class="lesson-panel" id="lessonPanel"></div>
+</div>
+
+<script>
+const days = [
+  { name:"Пн", topic:"Грамматика", icon:"ti-git-branch", color:"#EEEDFE", border:"#AFA9EC", text:"#3C3489", skill:"Времена глаголов" },
+  { name:"Вт", topic:"Лексика", icon:"ti-vocabulary", color:"#EAF3DE", border:"#97C459", text:"#27500A", skill:"Словарный запас" },
+  { name:"Ср", topic:"Аудирование", icon:"ti-headphones", color:"#FBEAF0", border:"#ED93B1", text:"#72243E", skill:"Понимание на слух" },
+  { name:"Чт", topic:"Речь", icon:"ti-message-circle", color:"#FAEEDA", border:"#EF9F27", text:"#633806", skill:"Разговорные фразы" },
+  { name:"Пт", topic:"Чтение", icon:"ti-book", color:"#E6F1FB", border:"#85B7EB", text:"#0C447C", skill:"Чтение" },
+  { name:"Сб", topic:"Письмо", icon:"ti-pencil", color:"#EAF3DE", border:"#97C459", text:"#27500A", skill:"Практика письма" },
+  { name:"Вс", topic:"Повторение", icon:"ti-refresh", color:"#FAECE7", border:"#F0997B", text:"#712B13", skill:"Закрепление" },
+];
+
+const quiz = [
+  { q:"She ___ (play) tennis every Sunday.", ans:"plays", hint:"Present Simple: he/she/it → глагол + s" },
+  { q:"They ___ (study) right now.", ans:"are studying", hint:"Present Continuous: am/is/are + глагол-ing" },
+  { q:"I ___ (work) here since 2020.", ans:"have worked", hint:"Present Perfect: have/has + 3-я форма глагола" },
+  { q:"He ___ (drive) to work yesterday.", ans:"drove", hint:"Past Simple: drive → drove" },
+  { q:"By 8pm she ___ (finish) the report.", ans:"will have finished", hint:"Future Perfect: will have + 3-я форма" },
+];
+
+const todayIdx = (new Date().getDay() + 6) % 7;
+let sel = todayIdx, qIdx = 0, scores = [], done = false;
+let timeLeft = 900, timerRunning = false, timerInterval = null;
+
+function updateProgress(v) {
+  v = parseInt(v);
+  document.getElementById("pFill").style.width = v + "%";
+  document.getElementById("pPct").textContent = v + "%";
+  ["m1","m2","m3","m4"].forEach((id, i) => {
+    document.getElementById(id).className = v >= [25,50,75,100][i] ? "active" : "";
+  });
+  document.getElementById("phaseBadge").textContent =
+    v >= 67 ? "Фаза 3 — Финиш" : v >= 34 ? "Фаза 2 — Рост" : "Фаза 1 — Фундамент";
+}
+
+function fmt(s) { return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0"); }
+
+function startTimer() {
+  if (timerRunning) return;
+  timerRunning = true;
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    const el = document.getElementById("timerVal");
+    if (!el) { clearInterval(timerInterval); timerRunning = false; return; }
+    el.textContent = fmt(timeLeft);
+    el.closest(".timer").className = "timer" + (timeLeft < 180 ? " urgent" : "");
+    if (timeLeft <= 0) { clearInterval(timerInterval); timerRunning = false; }
+  }, 1000);
+}
+
+function renderDays() {
+  const g = document.getElementById("daysGrid");
+  g.innerHTML = "";
+  days.forEach((d, i) => {
+    const c = document.createElement("div");
+    c.className = "day-card";
+    if (i === sel) { c.style.background = d.color; c.style.borderColor = d.border; c.style.borderWidth = "1.5px"; }
+    const tc = i === sel ? d.text : "";
+    c.innerHTML = `<span class="icon"><i class="ti ${d.icon}" style="color:${i===sel?d.text:'#888'};"></i></span>
+      <div class="dname" ${tc?`style="color:${tc}"`:""}>${d.name}</div>
+      <div class="dtopic">${d.topic}</div>
+      ${i===todayIdx?'<div class="today-badge">сегодня</div>':""}`;
+    c.onclick = () => { sel = i; timeLeft = 900; timerRunning = false; clearInterval(timerInterval); qIdx = 0; scores = []; done = false; renderDays(); renderLesson(); };
+    g.appendChild(c);
+  });
+}
+
+function renderLesson() {
+  const d = days[sel];
+  const panel = document.getElementById("lessonPanel");
+
+  let quizHTML = "";
+  if (!done && qIdx < quiz.length) {
+    const q = quiz[qIdx];
+    const dots = quiz.map((_,i) => `<div class="dot ${i<scores.length?(scores[i]?'ok':'err'):''}"></div>`).join("");
+    quizHTML = `<div class="quiz-progress"><span class="quiz-num">Вопрос ${qIdx+1} из ${quiz.length}</span><div class="dots">${dots}</div></div>
+      <div class="quiz-q">${q.q}</div>
+      <div class="quiz-row">
+        <input type="text" id="ans" placeholder="Введите ответ..." onkeydown="if(event.key==='Enter')check()">
+        <button onclick="check()">Ответить</button>
+      </div>
+      <div class="quiz-fb" id="fb"></div>
+      <button class="btn btn-primary" onclick="startTimer();document.getElementById('ans')&&document.getElementById('ans').focus();" style="margin-top:12px;">Начать урок прямо сейчас</button>`;
+  } else if (done) {
+    const ok = scores.filter(Boolean).length;
+    const msg = ok>=4?"Отличный результат! Продолжайте в том же духе.":ok>=3?"Хороший результат! Повторите слабые места.":"Не сдавайтесь! Пройдите урок ещё раз.";
+    quizHTML = `<div class="congrats"><div class="big">${ok}/${quiz.length}</div><p>${msg}</p>
+      <button class="btn btn-primary" onclick="qIdx=0;scores=[];done=false;renderLesson()">Пройти ещё раз</button>
+      <button class="btn btn-secondary" onclick="sel=(sel+1)%7;timeLeft=900;timerRunning=false;clearInterval(timerInterval);qIdx=0;scores=[];done=false;renderDays();renderLesson()">Следующий урок →</button>
+    </div>`;
+  }
+
+  panel.innerHTML = `
+    <div class="lesson-header" style="background:${d.color};">
+      <div>
+        <h2 style="color:${d.text};">${d.skill}</h2>
+        <div class="meta" style="color:${d.text};">${d.name} · ${d.topic}</div>
+      </div>
+      <div class="timer" style="color:${d.text};">
+        <i class="ti ti-clock"></i>
+        <span id="timerVal">${fmt(timeLeft)}</span>
+      </div>
+    </div>
+    <div class="lesson-block" style="background:${d.color}22;">
+      <div class="block-label" style="color:#0F6E56;"><i class="ti ti-hand-wave"></i> Приветствие · 1–2 мин</div>
+      <div class="block-content">Привет! Сегодня тема — <strong style="color:var(--text);">${d.skill}</strong>. За 15 минут освоите материал и сразу проверите себя. Готовы? Поехали!</div>
+    </div>
+    <div class="lesson-block" style="background:#EEEDFE22;">
+      <div class="block-label" style="color:#534AB7;"><i class="ti ti-book-2"></i> Обучение · 9–11 мин</div>
+      <div class="block-content">
+        <strong style="color:var(--text);">Present Simple vs Present Continuous</strong>
+        <div class="rule-box">
+          <table>
+            <tr><td>Present Simple</td><td>регулярные действия: always, every day, usually</td></tr>
+            <tr><td>Present Continuous</td><td>прямо сейчас: now, right now, at the moment</td></tr>
+            <tr><td>Пример 1</td><td>She <em>plays</em> tennis on weekends.</td></tr>
+            <tr><td>Пример 2</td><td>She <em>is playing</em> tennis right now.</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-block" style="background:#FAEEDA22;">
+      <div class="block-label" style="color:#854F0B;"><i class="ti ti-checklist"></i> Проверка · 3–4 мин</div>
+      ${quizHTML}
+    </div>`;
+}
+
+function check() {
+  const input = document.getElementById("ans");
+  const fb = document.getElementById("fb");
+  if (!input) return;
+  const val = input.value.trim().toLowerCase();
+  const q = quiz[qIdx];
+  const ok = val === q.ans.toLowerCase();
+  scores.push(ok);
+  fb.className = "quiz-fb " + (ok ? "ok" : "err");
+  fb.textContent = ok ? "Верно! ✓" : `Неверно. Правильный ответ: "${q.ans}" — ${q.hint}`;
+  setTimeout(() => { qIdx++; if (qIdx >= quiz.length) done = true; renderLesson(); }, 1800);
+}
+
+renderDays();
+renderLesson();
+</script>
+</body>
+</html>
